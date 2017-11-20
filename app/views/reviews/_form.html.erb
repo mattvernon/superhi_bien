@@ -24,6 +24,11 @@
     </p>
 
     <p>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </p>
+
+    <p>
       <%= f.label :body %>
       <%= f.text_area :body %>
     </p>
@@ -47,6 +52,8 @@
       <%= f.label :cuisine %>
       <%= f.text_field :cuisine %>
     </p>
+
+
 
   <%= f.submit "Save Review"%>
 <% end %>
