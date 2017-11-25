@@ -2,20 +2,20 @@
 
 <nav class="filters">
   <div>
-    <%= link_to "All", root_path %>
+    <%= active_link_to "All", root_path, active: { price: nil, cuisine: nil, location: nil, } %>
   </div>
 
   <div>
-    <%= link_to "$", root_path(price: 1, cuisine: @cuisine, location: @location) %>
-    <%= link_to "$$", root_path(price: 2, cuisine: @cuisine, location: @location) %>
-    <%= link_to "$$$", root_path(price: 3, cuisine: @cuisine, location: @location) %>
+    <%= active_link_to "$", root_path(price: 1, cuisine: @cuisine, location: @location), active: { price: 1 } %>
+    <%= active_link_to "$$", root_path(price: 2, cuisine: @cuisine, location: @location), active: { price: 2 } %>
+    <%= active_link_to "$$$", root_path(price: 3, cuisine: @cuisine, location: @location), active: { price: 3 } %>
   </div>
 
   <div>
-    <%= link_to "Pub", root_path(cuisine: "Pub", price: @price, location: @location) %>
-    <%= link_to "Indian", root_path(cuisine: "Indian", price: @price, location: @location) %>
-    <%= link_to "Mexican", root_path(cuisine: "Mexican", price: @price, location: @location) %>
-    <%= link_to "American", root_path(cuisine: "American", price: @price, location: @location) %>
+    <%= active_link_to "Pub", root_path(cuisine: "Pub", price: @price, location: @location), active: { cuisine: "Pub" } %>
+    <%= active_link_to "Indian", root_path(cuisine: "Indian", price: @price, location: @location), active: { cuisine: "Indian" } %>
+    <%= active_link_to "Mexican", root_path(cuisine: "Mexican", price: @price, location: @location), active: { cuisine: "Mexican" } %>
+    <%= active_link_to "American", root_path(cuisine: "American", price: @price, location: @location), active: { cuisine: "American" } %>
   </div>
 
   <form action="/">
@@ -29,7 +29,13 @@
 <% @reviews.each do |review| %>
 
   <div class="review">
-    <%= link_to review.title, review_path(review) %>
+    <%= link_to review_path(review) do %>
+      <h2><%= review.title %></h2>
+      <p>
+        <%= review.cuisine %> –
+        <%= pluralize review.comments.count, "comment" %>
+      </p>
+    <% end %>
   </div>
 <!-- hello -->
 <% end %>
