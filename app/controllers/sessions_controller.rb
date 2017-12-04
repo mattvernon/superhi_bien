@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 
   def new
     # login form
-
   end
 
   def create
@@ -18,6 +17,9 @@ class SessionsController < ApplicationController
 
     # if there is a user present
     if @user
+      # save this user to that user's session
+      session[:user_id] = @user.id
+
       redirect_to root_path
     else
       render "new"
@@ -27,6 +29,11 @@ class SessionsController < ApplicationController
 
   def destroy
     # log out
+    # remove the sessions completely
+    reset_session
+
+    #redirect to login page
+    redirect_to new_session_path
   end
 
 end

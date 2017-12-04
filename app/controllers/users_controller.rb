@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     # if its valid and it saves, go to the list users page
     # if not, see the form with errors
     if @user.save
+      # save the session with the user
+      session[:user_id] = @user.id
+
       redirect_to users_path
     else
       render "new"

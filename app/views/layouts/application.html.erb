@@ -19,7 +19,18 @@
         </h1>
       </nav>
       <nav>
-        <%= link_to "Add a Review", new_review_path %>
+        <!--- change nav links depending on if logged in or not -->
+        <% if session[:user_id].present? %>
+
+          <% @current_user.username %>
+          <%= link_to "Add a Review", new_review_path %>
+          <%= link_to "Log Out", session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_path %>
+          <%= link_to "Login", new_session_path %>
+        <% end %>
+
+
       </nav>
     </header>
 
