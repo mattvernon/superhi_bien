@@ -20,9 +20,8 @@
       </nav>
       <nav>
         <!--- change nav links depending on if logged in or not -->
-        <% if session[:user_id].present? %>
-
-          <% @current_user.username %>
+        <% if is_logged_in? %>
+          Hi <% @current_user.username %>!
           <%= link_to "Add a Review", new_review_path %>
           <%= link_to "Log Out", session_path, method: :delete %>
         <% else %>
