@@ -81,7 +81,7 @@ class ReviewsController < ApplicationController
         redirect_to root_path
       else
           # update with new info from form
-        if @review.update(form_params)
+        if @review.update(params.require(:review).permit(:title, :restaurant, :body, :score, :ambiance, :price, :cuisine, :address))
           #redirect to new review page
           redirect_to review_path(@review)
         else
