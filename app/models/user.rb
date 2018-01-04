@@ -13,4 +13,6 @@ class User < ApplicationRecord
     username
   end
 
+  mount_uploader :avatar, AvatarUploader
+
 end
