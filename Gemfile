@@ -44,14 +44,27 @@ gem 'jbuilder', '~> 2.5'
 # add in our geocoding
 gem 'geocoder'
 
-#add in simpleform
+# add in simpleform
 gem 'simple_form'
 
-#add in active links
+# add in active links
 gem 'active_link_to'
 
-#add in profanity filter for comments
+# add in profanity filter for comments
 gem 'profanity_filter'
+
+# allow users to upload images
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem 'fog-aws'
+
+# add admin panel
+gem 'activeadmin'
+gem 'devise'
+gem 'cancan'
+gem 'draper'
+gem 'pundit'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
